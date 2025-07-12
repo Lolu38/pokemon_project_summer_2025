@@ -1,6 +1,6 @@
 import sqlite3
 
-file = "./data_base/box.db"
+file = "./data_base/box_users.db"
 link = sqlite3.connect(file)
 cursors = link.cursor()
 
