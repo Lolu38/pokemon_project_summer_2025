@@ -3,6 +3,8 @@ class Pokemon:
         self.name = name
         self.level = level
         self.type_ = type_
+        self.hp = level * 10
+        self.attack = level * 2
 
     def __str__(self):
         return f"{self.name} (Level {self.level}, Type: {self.type_})"
