@@ -26,7 +26,7 @@ def handle_user(action):
     elif action == "register":
         register_user(username, password)
     else:
-        print("⚠️ Action non reconnue. Choisissez 'login' ou 'register'.")
+        print("⚠️ Action non reconnue. Choisissez 'login' o u 'register'.")
 
 
 def register_user(username, password):
@@ -61,7 +61,22 @@ def connect_user(username, password):
     
     link.close()
 
-
+def who_is_connected():
+    creation_table()
+    cursors.execute('''
+        SELECT username FROM users
+    ''')
+    
+    users = cursors.fetchall()
+    
+    if users:
+        print("Utilisateurs connectés :")
+        for user in users:
+            print(f"- {user[0]}")
+    else:
+        print("Aucun utilisateur connecté.")
+    
+    link.close()
 
 
 
@@ -71,4 +86,5 @@ def connect_user(username, password):
 
 def __main__():
     handle_user(action=input("Choisissez une action (login/register): ").strip().lower())
+    who_is_connected()
 __main__()
