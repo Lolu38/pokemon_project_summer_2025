@@ -69,5 +69,5 @@ def connect_user(username, password):
 
 
 def __main__():
-    handle_user(action=input("Choisissez une action (login/register) : ").strip().lower())
+    handle_user(action=input("Choisissez une action (login/register): ").strip().lower())
 __main__()
