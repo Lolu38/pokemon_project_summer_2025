@@ -9,7 +9,8 @@ def creation_table():
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT UNIQUE NOT NULL,
-            password TEXT NOT NULL
+            password TEXT NOT NULL,
+            role TEXT NOT NULL
         )
     ''')
     link.commit()
@@ -21,9 +22,9 @@ def handle_user(action):
     password = input("Choisis un mot de passe : ")
 
     if action == "login":
-        register_user(username, password)
-    elif action == "register":
         connect_user(username, password)
+    elif action == "register":
+        register_user(username, password)
     else:
         print("⚠️ Action non reconnue. Choisissez 'login' ou 'register'.")
 
@@ -32,8 +33,8 @@ def register_user(username, password):
     creation_table()
     try:
         cursors.execute('''
-            INSERT INTO users (username, password)
-            VALUES (?, ?)''', (username, password))
+            INSERT INTO users (username, password, role)
+            VALUES (?, ?, ?)''', (username, password, "player"))
         
         link.commit()
         print(f"✅ Utilisateur '{username}' créé avec succès !")
