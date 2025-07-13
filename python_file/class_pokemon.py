@@ -34,4 +34,13 @@ class Pokemon:
 
     def get_attack_set(self):
         return self.attack_set
+
+    def get_precision(self):
+        return self.precision
+    
+    def get_esquive(self):
+        return self.esquive
+    
+    def get_img(self):
+        return self.img
     
