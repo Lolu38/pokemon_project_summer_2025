@@ -21,18 +21,19 @@ def creation_table():
             attack4 INT NOT NULL,  
             precision FLOAT NOT NULL,
             esquive FLOAT NOT NULL
+            img TEXT NOT NULL
         )
     ''') #We have to puts the attacks as integers, because we will use the id of the attack in the attack_set
     link.commit()
 
 
-def create_pokemon(name, hp, attack, defense, speed, type_,  attack_set, precision, esquive):
+def create_pokemon(name, hp, attack, defense, speed, type_,  attack_set, precision, esquive, img):
     creation_table()
 
     try:
         cursors.execute('''
-            INSERT INTO pokemon (name, hp, attack, defense, speed, type_,  attack_set, precision, esquive)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''', (name, hp, attack, defense, speed, type_,  attack_set, precision, esquive))
+            INSERT INTO pokemon (name, hp, attack, defense, speed, type_,  attack_set, precision, esquive, img)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', (name, hp, attack, defense, speed, type_,  attack_set, precision, esquive, img))
         
         link.commit()
         print(f"✅ Pokémon '{name}' créé avec succès !")
@@ -54,8 +55,9 @@ def edit_pokemon(name):
     if not result:
         print(f"⚠️ Aucun Pokémon trouvé avec le nom '{name}'.")
         return
-
+    else:
+        print(f"⚙️ Édition du Pokémon '{name}':")
+    
     
     print(f"✅ Pokémon '{name}' mis à jour avec succès !")
-    
     link.close()

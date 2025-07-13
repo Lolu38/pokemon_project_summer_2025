@@ -1,5 +1,5 @@
 class Pokemon:
-    def __init__(self, name, hp, attack, defense, speed, type_,  attack_set, precision, esquive):
+    def __init__(self, name, hp, attack, defense, speed, type_,  attack_set, precision, esquive, img):
         self.name = name
         self.type_ = type_
         self.hp = hp
@@ -9,6 +9,7 @@ class Pokemon:
         self.attack_set = []
         self.precision = precision
         self.esquive = esquive
+        self.img = img
         
     def __str__(self):
         return f"{self.name} (Type: {self.type_})"
