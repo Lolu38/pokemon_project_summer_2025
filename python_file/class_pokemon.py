@@ -7,6 +7,8 @@ class Pokemon:
         self.defense = level * 2
         self.speed = level * 2
         self.attacks = []
+        self.precision = 0.9
+        self.esquive = 0.1
         
     def __str__(self):
         return f"{self.name} (Type: {self.type_})"
